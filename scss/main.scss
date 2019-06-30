@@ -6,3 +6,67 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+body, html{
+  height: 100%;
+}
+
+#app-container{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.container{
+  flex-grow: 1;
+}
+
+.header,
+.footer{
+  text-align: center;
+  padding: 10px;
+  background: #ccc;
+}
+
+.beer{
+  display: flex;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  align-content: center;
+
+  &__image{
+    width: 50px;
+    img{
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__title{
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &__description{
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+}
+
+.beerList{
+  max-width: 200px;
+  /* &__header{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+  }
+
+  &__title{
+    font-size: 24px;
+    line-height: 32px;
+    margin-bottom: 15px;
+  } */
+}

@@ -5,14 +5,13 @@ import { Beer } from "../interfaces";
 /**
  * Request beer list
  */
-export function getBeers(data) {
+export function getBeers() {
 
   return apiRequest<Beer.IBeer[]>(
     HTTP_METHOD.GET,
     `/beers`,
     {
-      page: data.page,
-      per_page: data.per_page,
+
     },
     {},
   );

@@ -35,8 +35,8 @@ module.exports = merge(common, {
     contentBase: path.resolve(__dirname, "dist"),
     index: 'index.html',
     overlay: {
-      warnings: true,
-      errors: true
+      warnings: false,
+      errors: false
     },
     hot: true,
   },

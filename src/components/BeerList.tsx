@@ -2,10 +2,26 @@ import * as React from "react";
 import { BeerApi } from "../api";
 import { BeerItem } from "./BeerItem";
 
-export const BeerList: React.SFC = (props) => {
+import { connect } from "react-redux";
+import { withRouter } from "react-router";
+import { doFetchBeerList } from "../actions/beer";
+import { IStore } from "../reducers";
 
+const mapStateToProps = (store: IStore, ownProps: any) => {
+    return {
+        beerList: store.beerList.list
+    };
+}
+
+const mapDispatchActions = (dispatch) => {
+    return {
+        fetchBeers: (page, per_page) => dispatch(doFetchBeerList(page, per_page))
+    };
+}
+
+const BeerList1: React.SFC = (props: any) => {
+    console.log(props);
     const [data, setData] = React.useState({
-        beers: [],
         page: 1,
         per_page: 10,
         by_name: "",
@@ -14,16 +30,8 @@ export const BeerList: React.SFC = (props) => {
 
     React.useEffect(
         () => {
-            BeerApi.getBeers({page: data.page, per_page: data.per_page}).then(
-                (res) => {
-                    setData({...data, beers: res.body});
-                },
-                (err) => {
-                    return err;
-                }
-            );
-        },
-        []
+            // props.fetchBeers(data.page, data.per_page)
+        }
     );
 
     return (
@@ -34,7 +42,7 @@ export const BeerList: React.SFC = (props) => {
                 value={data.by_name}
             /> */}
             {
-                data.beers.map( (beer) => {
+                props.beerList.map( (beer) => {
                     return (
                         <BeerItem
                             item={beer}
@@ -47,3 +55,35 @@ export const BeerList: React.SFC = (props) => {
         </div>
     );
 };
+
+class BeerList extends React.Component<any, any>{
+    constructor(props){
+        super(props);
+        props.fetchBeers();
+    }
+
+    render() {
+        console.log(this.props);
+        return (
+            <div className="beerList">
+                {
+                    this.props.beerList.map((beer) => {
+                        return (
+                            <BeerItem
+                                item={beer}
+                                key={beer.id}
+                            />
+                        );
+                    })
+                }
+            </div>
+        );
+    }
+}
+
+export const BeerListContainer = withRouter<any>(
+    connect<any, any, any>(
+        mapStateToProps,
+        mapDispatchActions
+    )(BeerList) as any
+);

@@ -28,36 +28,43 @@ body, html{
   background: #ccc;
 }
 
-.beer{
-  display: flex;
-  padding: 20px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-  justify-content: space-between;
-  align-content: center;
-
-  &__image{
-    width: 50px;
-    img{
-      max-width: 100%;
-      height: auto;
-    }
-  }
-
-  &__title{
-    font-size: 14px;
-    line-height: 20px;
-  }
-
-  &__description{
-    font-size: 12px;
-    line-height: 18px;
-  }
-
-}
 
 .beerList{
-  max-width: 200px;
+  input{
+    width: 100%;
+  }
+
+  .beer{
+    flex-grow: 200px;
+    display: flex;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    align-content: center;
+
+    &__image{
+      width: 50px;
+      img{
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    &__title{
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    &__description{
+      font-size: 12px;
+      line-height: 18px;
+    }
+
+  }
+  // max-width: 200px;
+  display: flex;
+  flex-wrap: wrap;
   /* &__header{
     display: flex;
     justify-content: space-between;

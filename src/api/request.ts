@@ -81,13 +81,13 @@ export function buildQueryStringParts(key: Array<string>, value: IRequestQuery, 
   if (value instanceof Array) {
 
     for (let i = 0; i < value.length; i++)
-      if (value[i] !== null && value[i] !== undefined)
+      if (value[i] && value[i] !== null && value[i] !== undefined)
         parts = parts.concat(buildQueryStringParts(key.slice().concat(""), value[i], level + 1));
 
   } else if (value instanceof Object) {
 
     for (const i in value)
-      if (value[i] !== null && value[i] !== undefined)
+      if (value[i] && value[i] !== null && value[i] !== undefined)
         parts = parts.concat(buildQueryStringParts(key.slice().concat([i]), value[i] as any, level + 1));
 
   } else {

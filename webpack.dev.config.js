@@ -35,9 +35,10 @@ module.exports = merge(common, {
     contentBase: path.resolve(__dirname, "dist"),
     index: 'index.html',
     overlay: {
-      warnings: false,
-      errors: false
+      warnings: true,
+      errors: true
     },
+    historyApiFallback: true,
     hot: true,
   },
 
@@ -128,7 +129,7 @@ module.exports = merge(common, {
     new HtmlWebPackPlugin({
       template: path.resolve(path.join(__dirname, 'src', 'index.html')),
       filename: './index.html',
-      title: "Skeleton Webpack",
+      title: "Beer",
 
       meta: {
         viewport: 'width=device-width',

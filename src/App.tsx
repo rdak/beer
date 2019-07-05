@@ -3,6 +3,7 @@ import { Header, Footer } from "./components";
 import { BeerListContainer } from "./components/BeerList";
 import { ROUTES } from "./routes";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BeerDetailsContainer } from "./components/BeerPage";
 
 /**
  * Main Component
@@ -16,7 +17,7 @@ export class App extends Component<{}, {}> {
         <BrowserRouter >
           <Switch>
             <Route exact path={ROUTES.INDEX.path} component={BeerListContainer} />
-            {/* <Route path={ROUTES.PROJECT_INDEX.path} component={ProjectNav} /> */}
+            <Route path={ROUTES.BEER_ITEM.path} component={BeerDetailsContainer} />
           </Switch>
         </BrowserRouter>
         <Footer />

@@ -1,9 +1,7 @@
 import * as React from "react";
-import { BeerApi } from "../api";
-import { BeerItem } from "./BeerItem";
-
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+
 import { doFetchBeer } from "../actions/beer";
 import { IStore } from "../reducers";
 import { getBeerById } from "../selectors/beerSelector";
@@ -13,7 +11,6 @@ const mapStateToProps = (store: IStore, ownProps: any): { beer: IBeer } => {
 
     const { id } = ownProps.match.params;
 
-    console.log(store);
     return {
         beer: getBeerById(store, Number(id))
     };

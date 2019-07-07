@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Header, Footer } from "./components";
-import { BeerListContainer } from "./components/BeerList";
+import { BeerListContainer } from "./containers/BeerList";
 import { ROUTES } from "./routes";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { BeerDetailsContainer } from "./components/BeerPage";
+import { BeerDetailsContainer } from "./containers/BeerPage";
+import { NotFound } from "./components/NotFound";
 
 /**
  * Main Component
@@ -14,12 +15,15 @@ export class App extends Component<{}, {}> {
     return (
       <div className="app">
         <Header />
-        <BrowserRouter >
-          <Switch>
-            <Route exact path={ROUTES.INDEX.path} component={BeerListContainer} />
-            <Route path={ROUTES.BEER_ITEM.path} component={BeerDetailsContainer} />
-          </Switch>
-        </BrowserRouter>
+        <div className="app__body">
+          <BrowserRouter >
+            <Switch>
+              <Route exact path={ROUTES.INDEX.path} component={BeerListContainer} />
+              <Route exact path={ROUTES.BEER_ITEM.path} component={BeerDetailsContainer} />
+              <Route component={NotFound} />
+            </Switch>
+          </BrowserRouter>
+        </div>
         <Footer />
       </div>
     );

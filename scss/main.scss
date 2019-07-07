@@ -21,11 +21,21 @@ body, html{
   flex-grow: 1;
 }
 
-.header,
-.footer{
-  text-align: center;
-  padding: 10px;
-  background: #ccc;
+.app{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__body{
+    flex-grow: 1;
+  }
+
+  &__header,
+  &__footer{
+    text-align: center;
+    padding: 10px;
+    background: #ccc;
+  }
 }
 
 

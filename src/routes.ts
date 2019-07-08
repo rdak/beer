@@ -1,8 +1,8 @@
 export const ROUTES = {
     INDEX: {
-        path: "/"
+        path: "/page/:page"
     },
     BEER_ITEM: {
-        path: `/:id`
+        path: `/beer/:id`
     },
 }

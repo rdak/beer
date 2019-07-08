@@ -1,0 +1,14 @@
+.pagination{
+  position: absolute;
+  top:0;
+  bottom:0;
+  width: 20px;
+
+  &--next{
+    right: 0;
+  }
+
+  &--prev{
+    left: 0;
+  }
+}

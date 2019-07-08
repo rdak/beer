@@ -52,6 +52,7 @@
     "autoprefixer": "^9.5.0",
     "fork-ts-checker-webpack-plugin": "^1.0.1",
     "react": "^16.6.3",
+    "react-datepicker": "^2.7.0",
     "react-dom": "^16.6.0",
     "react-hot-loader": "^4.3.12",
     "redux-thunk": "^2.3.0",

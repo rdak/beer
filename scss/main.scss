@@ -1,4 +1,9 @@
 @import "reset";
+@import "pagination";
+@import "beer-list";
+@import "beer-page";
+@import "~react-datepicker/dist/react-datepicker.css";
+
 
 html {
   box-sizing: border-box;
@@ -27,6 +32,9 @@ body, html{
   height: 100%;
 
   &__body{
+    width: 1180px;
+    padding: 20px;
+    margin: 0 auto;
     flex-grow: 1;
   }
 
@@ -36,54 +44,13 @@ body, html{
     padding: 10px;
     background: #ccc;
   }
+
+  /*
+  @media
+   */
 }
 
-
-.beerList{
-  input{
-    width: 100%;
-  }
-
-  .beer{
-    flex-grow: 200px;
-    display: flex;
-    padding: 20px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    justify-content: space-between;
-    align-content: center;
-
-    &__image{
-      width: 50px;
-      img{
-        max-width: 100%;
-        height: auto;
-      }
-    }
-
-    &__title{
-      font-size: 14px;
-      line-height: 20px;
-    }
-
-    &__description{
-      font-size: 12px;
-      line-height: 18px;
-    }
-
-  }
-  // max-width: 200px;
-  display: flex;
-  flex-wrap: wrap;
-  /* &__header{
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
-  }
-
-  &__title{
-    font-size: 24px;
-    line-height: 32px;
-    margin-bottom: 15px;
-  } */
+input:focus::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: transparent;
 }
+

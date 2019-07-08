@@ -1,17 +1,23 @@
 import * as Interfaces from "../interfaces";
 import { HTTP_METHOD, apiRequest } from "./request";
 import { Beer } from "../interfaces";
+import { dateFormat, nameFormat } from "../utils";
 
 /**
  * Request beer list
  */
 export function getBeers(query) {
 
-  /* queries work as regexp... */
+  const { brewed_after, beer_name} = query;
+
   return apiRequest<Beer.IBeer[]>(
     HTTP_METHOD.GET,
     `/beers`,
-    query,
+    {
+      ...query,
+      brewed_after: brewed_after && dateFormat(brewed_after),
+      beer_name: beer_name && nameFormat(beer_name)
+    },
     {},
   );
 

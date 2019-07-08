@@ -5,13 +5,13 @@ import { NavLink } from "react-router-dom";
 export const BeerItem: React.SFC<{ item: Beer.IBeer; }> = (props) => {
 
     return (
-        <NavLink to={`/${props.item.id}`}>
-            <div className="beer__image">
+        <NavLink to={`/beer/${props.item.id}`} className="beer-item">
+            <div className="beer-item__image">
                 <img src={props.item.image_url} alt={props.item.name} />
             </div>
-            <div className="beer__info">
-                <div className="beer__title">{props.item.name}</div>
-                <div className="beer__description">{props.item.first_brewed}</div>
+            <div className="beer-item__info">
+                <p className="beer-item__title">{props.item.name}</p>
+                <p className="beer-item__description">{props.item.first_brewed}</p>
             </div>
         </NavLink>
     );

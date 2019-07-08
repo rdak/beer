@@ -1,8 +1,18 @@
-.pagination{
+a.pagination{
   position: absolute;
-  top:0;
-  bottom:0;
+  top: 0;
+  bottom: 0;
   width: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  text-decoration: none;
+  color: #08c;
+  &:hover{
+      color: #000;
+  }
 
   &--next{
     right: 0;

@@ -89,6 +89,7 @@ class BeerList extends React.PureComponent<any, any>{
         return (
 
             <div className="beerList">
+                <h1 className="beerList__header">Know your beer!</h1>
                 <div className="filters">
                     <input
                         className="filters__item"
@@ -109,11 +110,11 @@ class BeerList extends React.PureComponent<any, any>{
                 <div className="arrows">
                     {
                         this.props.page > 1 &&
-                            <NavLink className="pagination pagination--prev" to={`/page/${Number(this.props.page)-1}`}> {"<"} </NavLink>
+                        <NavLink className="pagination pagination--prev" to={`/page/${Number(this.props.page) - 1}`}> ◀ </NavLink>
                     }
                     {
                         this.props.beerList.length === 10 &&
-                            <NavLink className="pagination pagination--next" to={`/page/${Number(this.props.page)+1}`}> {">"} </NavLink>
+                        <NavLink className="pagination pagination--next" to={`/page/${Number(this.props.page) + 1}`}> ▶ </NavLink>
                     }
                 </div>
                 {

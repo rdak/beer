@@ -29,20 +29,38 @@ class BeerDetails extends React.Component<any, any>{
     constructor(props) {
         super(props);
         // Get 'updated' info about this beer
-        // it doesn't make sense now, but still to have this for the dynamic data
         props.fetchBeer();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.match.params.id !== this.props.match.params.id) {
+        // if (prevProps.beer.id !== this.props.beer.id){
+            this.props.fetchBeer();
+        }
     }
 
     render() {
 
-        //description, abv, volume, food pairings
+        // Unfortunately, I don't know what do some properties mean...
         return (
             this.props.beer ?
                 <div className="beer">
-                    <div className="desc">{this.props.beer.desc}</div>
-                    <div className="desc">{this.props.beer.abv}</div>
-                    {/* <div className="desc">{this.props.beer.desc}</div> */}
-                </div> : null
+                    <h1>{this.props.beer.name}</h1>
+                    <p className="beer__desc">{this.props.beer.description}</p>
+                    <p className="beer__desc">{this.props.beer.abv} abv</p>
+                    <p className="beer__desc">
+                        Volume: {this.props.beer.volume.value} {this.props.beer.volume.unit}
+                    </p>
+
+                    <ul>
+                        <p className="beer__desc">Nice to have next to this beer:</p>
+                        {
+                            this.props.beer.food_pairing.map((food, index) => {
+                                return <li key={index}>{food}</li>
+                            })
+                        }
+                    </ul>
+                </div> : "Sorry, there is no beer on this page..."
         );
     }
 }

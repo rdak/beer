@@ -22,3 +22,6 @@ Example: http://beer.chebykin.net
     page: 2,
     per_page: 10
 `
+
+- "Get List" and "Get Single Beer" will accept additional queries "with_fields": return objects with only listed fields.
+  E.G.: Request with query "with_fields=name, description" will return [{id: 1, name: "beer_name", description: "beer_description"}, ...]

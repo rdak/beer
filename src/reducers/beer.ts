@@ -1,74 +1,79 @@
-import { IBeer } from "../interfaces/beer";
-import { IAction, ACTION, ACTION_STATUS } from "../actions/actions";
+import { IBeerItem } from "../interfaces/beer";
 
-export function beerReducer(state:any = {list: [], fetching: false, error: null}, action: IAction<any>) {
-    if (action.type === ACTION.BEER_LIST_FETCH) {
-        switch (action.status) {
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-            case ACTION_STATUS.REQUEST:
-                return {
-                    ...state,
-                    fetching: true,
-                    error: null,
-                };
+// export type IBeerItem = any;
 
-            case ACTION_STATUS.SUCCESS:
-                return {
-                    ...state,
-                    fetching: false,
-                    error: null,
-                    list: action.data,
-                };
-
-            case ACTION_STATUS.FAILURE:
-                return {
-                    ...state,
-                    fetching: false,
-                    error: action.error
-                };
-
-        }
-    }
-
-    if (action.type === ACTION.BEER_FETCH) {
-
-
-        switch (action.status) {
-
-            case ACTION_STATUS.REQUEST:
-                return {
-                    ...state,
-                    fetching: true,
-                    error: null,
-                };
-
-            case ACTION_STATUS.SUCCESS:
-                const beerItem = action.data[0];
-
-                /* merge */
-                const beer = state.list.find((b) => {return b.id === beerItem.id});
-                if (beer) {
-                    // state.list = [...state.list, beerItem];
-                } else {
-                    state.list = [...state.list, beerItem];
-                }
-                return {
-                    ...state,
-                    fetching: false,
-                    error: null
-                };
-
-            case ACTION_STATUS.FAILURE:
-                return {
-                    ...state,
-                    fetching: false,
-                    error: action.error
-                };
-
-        }
-
-    }
-
-    return state;
-
+// Define a type for the slice state
+export interface IBeerListState {
+	fetching: boolean;
+	error: string;
+	list: Array<IBeerItem>;
 }
+
+// Define the initial state using that type
+const initialState: IBeerListState = {
+	fetching: false,
+	error: "",
+	list: [],
+};
+
+export const beerListSlice = createSlice({
+	name: "counter",
+	initialState,
+	reducers: {
+		requestBeerList: (state) => {
+			state.fetching = true;
+		},
+		setBeerList: (state, action: PayloadAction<Array<IBeerItem>>) => {
+			console.log(action.payload);
+			// state = {
+			// 	fetching: false,
+			// 	error: null,
+			// 	list: action.payload,
+			// };
+			state.fetching = false;
+			state.error = "";
+			state.list = action.payload;
+		},
+		failRequestBeerList: (state, action: PayloadAction<string>) => {
+			state.fetching = false;
+			state.error = action.payload;
+		},
+
+		requestBeerItem: (state) => {
+			state.fetching = true;
+		},
+		setBeerItem: (state, action: PayloadAction<IBeerItem>) => {
+			const beerItem = action.payload;
+
+			/* merge */
+			const beerIndex = state.list.findIndex((b) => {
+				return b.id === beerItem.id;
+			});
+
+			if (beerIndex > -1) {
+				// state.list = state.list.splice()[...state.list, beerItem];
+			} else {
+				state.list = [...state.list, beerItem];
+			}
+		},
+		failRequestBeerItem: (state, action: PayloadAction<string>) => {
+			state.fetching = false;
+			state.error = action.payload;
+		},
+	},
+});
+
+// Action creators are generated for each case reducer function
+export const {
+	requestBeerList,
+	setBeerList,
+	failRequestBeerList,
+
+	requestBeerItem,
+	setBeerItem,
+	failRequestBeerItem,
+} = beerListSlice.actions;
+
+export default beerListSlice.reducer;

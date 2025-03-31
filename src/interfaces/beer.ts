@@ -1,9 +1,24 @@
 /**
  * Beer object interface
  */
-export interface IBeer {
-  id: number;
-  name: string;
-  first_brewed: string;
-  image_url: string;
+export interface IBeerItem {
+	id: number;
+	name: string;
+	description?: string;
+
+	tagLine?: string;
+	first_brewed: string;
+
+	image: string;
+
+	desc: string;
+	accounts: Array<string>;
+	phrases: Array<string>;
+
+	abv?: string;
+	volume?: {
+		value: number;
+		unit: string;
+	};
+	food_pairing?: Array<string>;
 }

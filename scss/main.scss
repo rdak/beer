@@ -1,58 +1,64 @@
-@import "reset";
-@import "pagination";
-@import "beer-list";
-@import "beer-page";
+@use "reset";
+@use "pagination";
+@use "beer-list";
+@use "beer-page";
+@use "group-item";
 @import "~react-datepicker/dist/react-datepicker.css";
 
-
 html {
-  box-sizing: border-box;
-  font-family: Roboto;
+	box-sizing: border-box;
+	font-family: Roboto;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
 
-body, html{
-  height: 100%;
+body,
+html {
+	height: 100%;
 }
 
-#app-container{
-  display: flex;
-  height: 100%;
-  flex-direction: column;
+#app-container {
+	display: flex;
+	height: 100%;
+	flex-direction: column;
 }
 
-.container{
-  flex-grow: 1;
+.container {
+	flex-grow: 1;
 }
 
-.app{
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.app {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 
-  &__body{
-    width: 1180px;
-    padding: 20px;
-    margin: 0 auto;
-    flex-grow: 1;
-  }
+	&__body {
+		width: 1180px;
+		padding: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto;
+		flex-grow: 1;
+	}
 
-  &__header,
-  &__footer{
-    text-align: center;
-    padding: 10px;
-    background: #ccc;
-  }
+	&__header,
+	&__footer {
+		text-align: center;
+		padding: 10px;
+		background: #ccc;
+	}
 
-  /*
+	/*
   @media
    */
 }
 
-input:focus::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: transparent;
+input:focus::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: transparent;
 }
-

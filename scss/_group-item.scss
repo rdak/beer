@@ -1,0 +1,159 @@
+.group-item {
+	// height: 320px;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid #ccc;
+	margin: 10px;
+
+	display: flex;
+	// flex-direction: column;
+	// justify-content: space-between;
+	align-content: center;
+
+	label {
+		width: 150px;
+		display: block;
+		text-transform: uppercase;
+		padding-bottom: 10px;
+	}
+
+	&__color-wrapper {
+		width: 10%;
+		label {
+			margin-top: 10px;
+		}
+	}
+
+	&__color {
+		width: 40px;
+		height: 40px;
+	}
+
+	&__form-wrapper {
+		width: 90%;
+		display: flex;
+		flex-direction: column;
+		// align-items: left;
+	}
+
+	&:hover {
+		// color: #000;
+	}
+
+	&__image {
+		width: 50px;
+		align-self: center;
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
+
+	&__title {
+		display: flex;
+		align-items: center;
+		margin-bottom: 20px;
+		font-size: 14px;
+		line-height: 20px;
+		label {
+			padding: 0;
+		}
+		input {
+			width: 200px;
+			padding: 10px;
+		}
+	}
+
+	&__description {
+		font-size: 12px;
+		line-height: 18px;
+	}
+
+	&__actions {
+		border-top: 1px solid #ccc;
+		padding: 15px 0;
+		display: flex;
+		justify-content: flex-end;
+	}
+}
+
+.button {
+	padding: 5px 10px;
+	text-transform: uppercase;
+	margin-left: 20px;
+	border: none;
+	letter-spacing: 1px;
+	cursor: pointer;
+	&__delete {
+		color: #000;
+		background: transparent;
+		&:hover {
+			background: aliceblue;
+		}
+	}
+
+	&__save {
+		color: #fff;
+		background: rgb(22, 33, 97);
+		&:hover {
+			background: #3749b2;
+		}
+	}
+
+	&__add {
+		color: #fff;
+		background: rgb(40, 137, 182);
+		border: 1px solid #ccc;
+		&:hover {
+			background: #37b29d;
+		}
+	}
+}
+
+.login {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	&__header {
+		margin-bottom: 40px;
+	}
+
+	&__form-control {
+		margin: 20px 0;
+		label {
+			display: block;
+			width: 100%;
+			padding-bottom: 10px;
+		}
+		input {
+			display: block;
+			width: 100%;
+			padding: 5px;
+		}
+	}
+
+	&__form-button {
+		width: 100%;
+		padding: 10px;
+		border-radius: 8px;
+		text-transform: uppercase;
+		letter-spacing: 1.5px;
+		background: transparent;
+	}
+}
+
+.tag_list {
+	width: 300px;
+	margin-left: 150px;
+	margin-bottom: 20px;
+}
+
+.tag_list-item {
+	display: inline-block;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}

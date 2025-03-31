@@ -1,4 +1,4 @@
 export const CONFIG = {
-  api_url: "https://api.punkapi.com/v2",
-  api_request_timeout: 10000,
+	api_url: "https://punkapi.online/v3",
+	api_request_timeout: 10000,
 };

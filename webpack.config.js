@@ -1,26 +1,17 @@
 const path = require("path");
 
 module.exports = {
-  output: {
-    filename: "bundle.[name].js",
-    path: path.resolve(__dirname, "dist"),
-  },
+	entry: {
+		main: "./src/index.tsx",
+	},
 
-  resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"],
-    alias: {
-      "react-dom": "ReactDOM",
-      react: "React",
-    },
-  },
+	output: {
+		filename: "bundle.[name].js",
+		path: path.resolve(__dirname, "dist"),
+	},
 
-  // When importing a module whose path matches one of the following, just
-  // assume a corresponding global variable exists and use that instead.
-  // This is important because it allows us to avoid bundling all of our
-  // dependencies, which allows browsers to cache those libraries between builds.
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM",
-  },
+	resolve: {
+		// Add '.ts' and '.tsx' as resolvable extensions.
+		extensions: [".ts", ".tsx", ".js", ".json"],
+	},
 };

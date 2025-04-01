@@ -10,6 +10,9 @@ Example: http://beer.chebykin.net
 
 ## API
 
--   asdad
+-   https://github.com/alxiw/punkapi
 
 ## Versions
+
+-   all libraries have last versions (01.04.2025)
+-   tested on Ubuntu 22.04, node 22.14.0, npm 10.9.2

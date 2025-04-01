@@ -26,12 +26,6 @@ export const beerListSlice = createSlice({
 			state.fetching = true;
 		},
 		setBeerList: (state, action: PayloadAction<Array<IBeerItem>>) => {
-			console.log(action.payload);
-			// state = {
-			// 	fetching: false,
-			// 	error: null,
-			// 	list: action.payload,
-			// };
 			state.fetching = false;
 			state.error = "";
 			state.list = action.payload;

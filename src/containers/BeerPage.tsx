@@ -2,10 +2,17 @@ import * as React from "react";
 
 import { doFetchBeer } from "../actions/beer";
 import { useAppDispatch, useAppSelector } from "../reducers/hooks";
-import { useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
+import {
+	failRequestBeerItem,
+	requestBeerItem,
+	setBeerItem,
+} from "../reducers/beer";
+import { BeerApi } from "../api";
 
 export const BeerDetails: React.FC = () => {
 	const routerParams = useParams();
+	const [isLoading, setIsLoading] = React.useState(false);
 
 	const id = Number(routerParams.id);
 
@@ -20,8 +27,24 @@ export const BeerDetails: React.FC = () => {
 	const dispatch = useAppDispatch();
 
 	React.useEffect(() => {
-		dispatch(doFetchBeer(id));
+		dispatch(requestBeerItem());
+		setIsLoading(true);
+
+		BeerApi.getBeer(id)
+			.then(
+				(res) => {
+					dispatch(setBeerItem(res.body));
+				},
+				(err) => {
+					dispatch(failRequestBeerItem());
+				}
+			)
+			.finally(() => {
+				setIsLoading(false);
+			});
 	}, [id]);
+
+	const navigate = useNavigate();
 
 	return beer ? (
 		<div className="beer">
@@ -38,8 +61,19 @@ export const BeerDetails: React.FC = () => {
 					return <li key={index}>{food}</li>;
 				})}
 			</ul>
+
+			<Link
+				className="go-back-link"
+				to={".."}
+				onClick={(e) => {
+					e.preventDefault();
+					navigate(-1);
+				}}
+			>
+				Go back
+			</Link>
 		</div>
 	) : (
-		"Sorry, there is no beer on this page..."
+		<p>Sorry, there is no beer on this page...</p>
 	);
 };

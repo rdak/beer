@@ -1,9 +1,7 @@
-import * as Interfaces from "../interfaces";
 import { HTTP_METHOD, apiRequest } from "./request";
 import { Beer } from "../interfaces";
 import { dateFormat } from "../utils";
 
-getBeers;
 /**
  * Request beer list
  */
@@ -20,6 +18,6 @@ export function getBeers(query) {
 /**
  * Get single beer
  */
-export function getBeer(id) {
-	return apiRequest<Beer.IBeerItem>(HTTP_METHOD.GET, `/groups/${id}`);
+export function getBeer(id: number) {
+	return apiRequest<Beer.IBeerItem>(HTTP_METHOD.GET, `/beers/${id}`);
 }

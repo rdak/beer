@@ -40,8 +40,6 @@ html {
 		width: 1180px;
 		padding: 20px;
 		display: flex;
-		align-items: center;
-		justify-content: center;
 		margin: 0 auto;
 		flex-grow: 1;
 	}
@@ -52,10 +50,6 @@ html {
 		padding: 10px;
 		background: #ccc;
 	}
-
-	/*
-  @media
-   */
 }
 
 input:focus::placeholder {

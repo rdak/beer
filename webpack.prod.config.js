@@ -1,35 +1,16 @@
-const merge = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const common = require("./webpack.config.js");
 const path = require("path");
 
-const webpack = require("webpack");
-
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-// const WebpackPwaManifest = require('webpack-pwa-manifest')
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-
-let copyArray = [
-	{
-		from: "./node_modules/react-dom/umd/react-dom.production.min.js",
-		to: "assets/react-dom.production.min.js",
-	},
-	{
-		from: "./node_modules/react/umd/react.production.min.js",
-		to: "assets/react.production.min.js",
-	},
-];
 
 module.exports = merge(common, {
 	mode: "production",
-
-	clean: true,
-	// Enable sourcemaps for debugging webpack's output.
-	devtool: "",
 
 	module: {
 		rules: [
@@ -67,14 +48,6 @@ module.exports = merge(common, {
 					{ loader: "css-loader" },
 					{
 						loader: "postcss-loader",
-						options: {
-							ident: "postcss",
-							plugins: [
-								require("autoprefixer")({
-									browsers: ["last 4 versions"],
-								}),
-							],
-						},
 					},
 					{ loader: "sass-loader" },
 				],
@@ -113,15 +86,14 @@ module.exports = merge(common, {
 	},
 
 	plugins: [
-		new CleanWebpackPlugin(["dist"]),
+		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin({
-			filename: "main.[hash].css",
+			filename: "main.[fullhash].css",
 		}),
-		new CopyWebpackPlugin(copyArray),
 		new HtmlWebPackPlugin({
+			title: "Beer list",
 			template: path.resolve(path.join(__dirname, "src", "index.html")),
 			filename: "./index.html",
-			title: "Test",
 
 			meta: {
 				viewport: "width=device-width",
@@ -134,18 +106,7 @@ module.exports = merge(common, {
 	],
 
 	optimization: {
-		minimizer: [
-			new UglifyJsPlugin({
-				test: /\.js(\?.*)?$/i,
-				cache: true,
-				parallel: true,
-				uglifyOptions: {
-					output: {
-						comments: false,
-					},
-				},
-			}),
-			new OptimizeCSSAssetsPlugin({}),
-		],
+		minimize: true,
+		minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
 	},
 });
